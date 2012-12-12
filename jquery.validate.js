@@ -32,7 +32,9 @@ $.extend($.fn, {
 		}
 
 		// Add novalidate tag if HTML5.
-		this.attr('novalidate', 'novalidate');
+		if (! ($.browser.msie  && parseInt($.browser.version, 10) === 7)) {
+			this.attr('novalidate', 'novalidate');
+		}
 
 		validator = new $.validator( options, this[0] );
 		$.data(this[0], 'validator', validator);
